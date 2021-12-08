@@ -13,14 +13,14 @@
               (->> (str/split weeks #"\ ")
                    (map read-string))))))
 
-;; rounded up -> even > half total  ==  2 * even > total
+;; (rounded up -> even > half total) is equal to  (2 * even > total)
 
 (defn process-input [input]
   (let [len (count input)
         num-even (count (filter even? input))]
     (> (* 2 num-even) len)))
 
-(defn -main [& args]
+(defn -main [& _args]
   (let [input (read-input)
         outputs (->> input (map process-input)
                      (map #(if % "ANO" "NE")))]
